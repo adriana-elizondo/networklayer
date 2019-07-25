@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		264935A221B6317400FA3816 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264935A121B6317400FA3816 /* NetworkLayer.swift */; };
+		26D6141721B6906D002024A4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141621B6906D002024A4 /* Endpoint.swift */; };
+		26D6141A21B6908F002024A4 /* BaseResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141921B6908F002024A4 /* BaseResponseCodable.swift */; };
+		26D6141F21B690A4002024A4 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141C21B690A3002024A4 /* ParameterEncoding.swift */; };
+		26D6142021B690A4002024A4 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141D21B690A3002024A4 /* URLParameterEncoder.swift */; };
+		26D6142121B690A4002024A4 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141E21B690A3002024A4 /* JSONParameterEncoder.swift */; };
+		26D6142421B690C6002024A4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6142321B690C6002024A4 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +31,12 @@
 /* Begin PBXFileReference section */
 		2649359E21B6317400FA3816 /* libNetworkLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNetworkLayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		264935A121B6317400FA3816 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
+		26D6141621B6906D002024A4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		26D6141921B6908F002024A4 /* BaseResponseCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponseCodable.swift; sourceTree = "<group>"; };
+		26D6141C21B690A3002024A4 /* ParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		26D6141D21B690A3002024A4 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		26D6141E21B690A3002024A4 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		26D6142321B690C6002024A4 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +69,47 @@
 		264935A021B6317400FA3816 /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				26D6142221B690AF002024A4 /* Router */,
+				26D6141B21B69096002024A4 /* Parameters */,
+				26D6141821B69074002024A4 /* Response */,
+				26D6141521B6905B002024A4 /* EndPoint */,
 				264935A121B6317400FA3816 /* NetworkLayer.swift */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		26D6141521B6905B002024A4 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				26D6141621B6906D002024A4 /* Endpoint.swift */,
+			);
+			path = EndPoint;
+			sourceTree = "<group>";
+		};
+		26D6141821B69074002024A4 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				26D6141921B6908F002024A4 /* BaseResponseCodable.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		26D6141B21B69096002024A4 /* Parameters */ = {
+			isa = PBXGroup;
+			children = (
+				26D6141E21B690A3002024A4 /* JSONParameterEncoder.swift */,
+				26D6141C21B690A3002024A4 /* ParameterEncoding.swift */,
+				26D6141D21B690A3002024A4 /* URLParameterEncoder.swift */,
+			);
+			path = Parameters;
+			sourceTree = "<group>";
+		};
+		26D6142221B690AF002024A4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				26D6142321B690C6002024A4 /* Router.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +169,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26D6142421B690C6002024A4 /* Router.swift in Sources */,
+				26D6142121B690A4002024A4 /* JSONParameterEncoder.swift in Sources */,
+				26D6141A21B6908F002024A4 /* BaseResponseCodable.swift in Sources */,
+				26D6141F21B690A4002024A4 /* ParameterEncoding.swift in Sources */,
+				26D6141721B6906D002024A4 /* Endpoint.swift in Sources */,
 				264935A221B6317400FA3816 /* NetworkLayer.swift in Sources */,
+				26D6142021B690A4002024A4 /* URLParameterEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +233,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -232,7 +288,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

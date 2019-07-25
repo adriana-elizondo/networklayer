@@ -23,19 +23,21 @@ public enum ResponseErrors: Int{
     case Unknown = 999
 }
 
-public protocol ServiceResponseProtocol: Codable{
-    func getServiceResponse() -> BaseResponseCodable
+public protocol ErrorHandler{
+    var errorCode: Int? { get }
+    var errorDescription : String? { get }
+    var errorMetaData: ErrorMetaData? { get }
+    var lastUpdate: Double? { get }
 }
 
-open class BaseResponseCodable: Codable{
-    var errorCode: Int?
-    var errorDescription : String?
-    var errorMetaData: ErrorMetaData?
-    var lastUpdate: Double?
+public typealias ServiceResponseCodable = Codable & ErrorHandler
 
+public protocol ServiceResponseProtocol: Codable{
+    func getServiceResponse() -> ServiceResponseCodable
 }
 
 public struct ErrorMetaData: Codable{
     var startupTitle: String?
     var startupMessage: String?
 }
+

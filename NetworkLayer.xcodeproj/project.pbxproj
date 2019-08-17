@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		264935A221B6317400FA3816 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264935A121B6317400FA3816 /* NetworkLayer.swift */; };
+		2692EBCB22EC47CF00192405 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2692EBCA22EC47CF00192405 /* ImageCache.swift */; };
 		26D6141721B6906D002024A4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141621B6906D002024A4 /* Endpoint.swift */; };
 		26D6141A21B6908F002024A4 /* BaseResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141921B6908F002024A4 /* BaseResponseCodable.swift */; };
 		26D6141F21B690A4002024A4 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141C21B690A3002024A4 /* ParameterEncoding.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		2649359E21B6317400FA3816 /* libNetworkLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNetworkLayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		264935A121B6317400FA3816 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
+		2692EBCA22EC47CF00192405 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		26D6141621B6906D002024A4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		26D6141921B6908F002024A4 /* BaseResponseCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponseCodable.swift; sourceTree = "<group>"; };
 		26D6141C21B690A3002024A4 /* ParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		264935A021B6317400FA3816 /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				2692EBC922EC479200192405 /* ImageCache */,
 				26D6142221B690AF002024A4 /* Router */,
 				26D6141B21B69096002024A4 /* Parameters */,
 				26D6141821B69074002024A4 /* Response */,
@@ -76,6 +79,14 @@
 				264935A121B6317400FA3816 /* NetworkLayer.swift */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		2692EBC922EC479200192405 /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				2692EBCA22EC47CF00192405 /* ImageCache.swift */,
+			);
+			path = ImageCache;
 			sourceTree = "<group>";
 		};
 		26D6141521B6905B002024A4 /* EndPoint */ = {
@@ -144,6 +155,7 @@
 				TargetAttributes = {
 					2649359D21B6317400FA3816 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1100;
 					};
 				};
 			};
@@ -153,6 +165,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 2649359521B6317400FA3816;
 			productRefGroup = 2649359F21B6317400FA3816 /* Products */;
@@ -171,6 +184,7 @@
 			files = (
 				26D6142421B690C6002024A4 /* Router.swift in Sources */,
 				26D6142121B690A4002024A4 /* JSONParameterEncoder.swift in Sources */,
+				2692EBCB22EC47CF00192405 /* ImageCache.swift in Sources */,
 				26D6141A21B6908F002024A4 /* BaseResponseCodable.swift in Sources */,
 				26D6141F21B690A4002024A4 /* ParameterEncoding.swift in Sources */,
 				26D6141721B6906D002024A4 /* Endpoint.swift in Sources */,
@@ -306,7 +320,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -319,7 +333,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

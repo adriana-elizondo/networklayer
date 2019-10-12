@@ -9,13 +9,13 @@
 import Foundation
 public enum NetworkResponseError: Error {
     case error(errorData: ErrorMetaData)
-    case parsingError
-    case requestFailed
-    case badRequest
-    case forbidden
-    case serverError
-    case redirected
-    case migration
+    case parsingError(error: Error?)
+    case requestFailed(error: Error?)
+    case badRequest(error: Error?)
+    case forbidden(error: Error?)
+    case serverError(error: Error?)
+    case redirected(error: Error?)
+    case migration(error: Error?)
 }
 
 public enum ResponseErrors: Int {

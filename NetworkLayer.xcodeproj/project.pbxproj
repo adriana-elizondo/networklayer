@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		264935A221B6317400FA3816 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264935A121B6317400FA3816 /* NetworkLayer.swift */; };
+		264B48B02327791000D2AFC8 /* URLPathParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B48AF2327791000D2AFC8 /* URLPathParameterEncoder.swift */; };
+		268598B3235053E80052D4F3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268598B2235053E80052D4F3 /* Extensions.swift */; };
 		2692EBCB22EC47CF00192405 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2692EBCA22EC47CF00192405 /* ImageCache.swift */; };
 		26D6141721B6906D002024A4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141621B6906D002024A4 /* Endpoint.swift */; };
 		26D6141A21B6908F002024A4 /* BaseResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141921B6908F002024A4 /* BaseResponseCodable.swift */; };
@@ -16,6 +18,23 @@
 		26D6142121B690A4002024A4 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6141E21B690A3002024A4 /* JSONParameterEncoder.swift */; };
 		26D6142421B690C6002024A4 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D6142321B690C6002024A4 /* Router.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		268598FF23505B890052D4F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 268598FA23505B890052D4F3 /* NetworkLayerTests.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 268598CC23505B3D0052D4F3;
+			remoteInfo = NetworkLayerTests;
+		};
+		2685990123505B890052D4F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 268598FA23505B890052D4F3 /* NetworkLayerTests.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 268598E223505B3F0052D4F3;
+			remoteInfo = NetworkLayerTestsTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		2649359C21B6317400FA3816 /* CopyFiles */ = {
@@ -32,6 +51,9 @@
 /* Begin PBXFileReference section */
 		2649359E21B6317400FA3816 /* libNetworkLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNetworkLayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		264935A121B6317400FA3816 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
+		264B48AF2327791000D2AFC8 /* URLPathParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPathParameterEncoder.swift; sourceTree = "<group>"; };
+		268598B2235053E80052D4F3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		268598FA23505B890052D4F3 /* NetworkLayerTests.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NetworkLayerTests.xcodeproj; path = ../../NetworkLayer/NetworkLayerTests/NetworkLayerTests.xcodeproj; sourceTree = "<group>"; };
 		2692EBCA22EC47CF00192405 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		26D6141621B6906D002024A4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		26D6141921B6908F002024A4 /* BaseResponseCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponseCodable.swift; sourceTree = "<group>"; };
@@ -57,6 +79,7 @@
 			children = (
 				264935A021B6317400FA3816 /* NetworkLayer */,
 				2649359F21B6317400FA3816 /* Products */,
+				268598FA23505B890052D4F3 /* NetworkLayerTests.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +94,7 @@
 		264935A021B6317400FA3816 /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				268598B1235053CA0052D4F3 /* Extensions */,
 				2692EBC922EC479200192405 /* ImageCache */,
 				26D6142221B690AF002024A4 /* Router */,
 				26D6141B21B69096002024A4 /* Parameters */,
@@ -79,6 +103,23 @@
 				264935A121B6317400FA3816 /* NetworkLayer.swift */,
 			);
 			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		268598B1235053CA0052D4F3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				268598B2235053E80052D4F3 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		268598FB23505B890052D4F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2685990023505B890052D4F3 /* NetworkLayerTests.app */,
+				2685990223505B890052D4F3 /* NetworkLayerTestsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		2692EBC922EC479200192405 /* ImageCache */ = {
@@ -111,6 +152,7 @@
 				26D6141E21B690A3002024A4 /* JSONParameterEncoder.swift */,
 				26D6141C21B690A3002024A4 /* ParameterEncoding.swift */,
 				26D6141D21B690A3002024A4 /* URLParameterEncoder.swift */,
+				264B48AF2327791000D2AFC8 /* URLPathParameterEncoder.swift */,
 			);
 			path = Parameters;
 			sourceTree = "<group>";
@@ -149,7 +191,7 @@
 		2649359621B6317400FA3816 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = EF;
 				TargetAttributes = {
@@ -170,12 +212,35 @@
 			mainGroup = 2649359521B6317400FA3816;
 			productRefGroup = 2649359F21B6317400FA3816 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 268598FB23505B890052D4F3 /* Products */;
+					ProjectRef = 268598FA23505B890052D4F3 /* NetworkLayerTests.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2649359D21B6317400FA3816 /* NetworkLayer */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2685990023505B890052D4F3 /* NetworkLayerTests.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = NetworkLayerTests.app;
+			remoteRef = 268598FF23505B890052D4F3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2685990223505B890052D4F3 /* NetworkLayerTestsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = NetworkLayerTestsTests.xctest;
+			remoteRef = 2685990123505B890052D4F3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2649359A21B6317400FA3816 /* Sources */ = {
@@ -186,6 +251,8 @@
 				26D6142121B690A4002024A4 /* JSONParameterEncoder.swift in Sources */,
 				2692EBCB22EC47CF00192405 /* ImageCache.swift in Sources */,
 				26D6141A21B6908F002024A4 /* BaseResponseCodable.swift in Sources */,
+				264B48B02327791000D2AFC8 /* URLPathParameterEncoder.swift in Sources */,
+				268598B3235053E80052D4F3 /* Extensions.swift in Sources */,
 				26D6141F21B690A4002024A4 /* ParameterEncoding.swift in Sources */,
 				26D6141721B6906D002024A4 /* Endpoint.swift in Sources */,
 				264935A221B6317400FA3816 /* NetworkLayer.swift in Sources */,

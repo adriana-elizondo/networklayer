@@ -9,14 +9,26 @@
 import Foundation
 import UIKit
 
-public typealias NetworkRouterCompletion<T> = (_ data: T?,
-    _ response: URLResponse?, _ error: NetworkResponseError?) -> Void
+public typealias NetworkRouterCompletion<T> =
+    (_ data: T?,
+    _ response: URLResponse?,
+    _ error: NetworkResponseError?) -> Void
+public protocol URLSessionDataTaskProtocol {
+    func resume()
+    func cancel()
+}
+public typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Void
+public protocol URLSessionProtocol {
+    func routerDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
+}
 public protocol NetworkRouter: class {
     associatedtype EndPoint
     associatedtype ResponseObject
-    func request(with route: EndPoint, completion: @escaping NetworkRouterCompletion<ResponseObject>)
+    func request(with route: EndPoint,
+                 completion: @escaping NetworkRouterCompletion<ResponseObject>)
     func cancel()
 }
+
 public protocol RouterCompletionDelegate: class {
     func didFinishWithSuccess()
     func didFinishWithError()
@@ -24,29 +36,31 @@ public protocol RouterCompletionDelegate: class {
 public class Router<E: EndpointType, R: Codable>: NetworkRouter {
     public typealias EndPoint = E
     public typealias ResponseObject = R
-    private var task: URLSessionTask?
+    private var task: URLSessionDataTaskProtocol?
     private weak var delegate: RouterCompletionDelegate?
-    public init() {}
-    public func request(with route: E, completion: @escaping (R?, URLResponse?,
-        NetworkResponseError?) -> Void) {
-        let session = URLSession.shared
+    private let session: URLSessionProtocol
+    public init(session: URLSessionProtocol) {
+        self.session = session
+    }
+    public func request(with route: E, completion:
+        @escaping (R?,URLResponse?,NetworkResponseError?) -> Void) {
         do {
             let request = try buildRequest(from: route)
-            task = session.dataTask(with: request, completionHandler: { data, response, error in
+            task = session.routerDataTask(with: request, completionHandler: { data, response, error in
                 //Check status code first
                 if error == nil, let urlResponse = response as? HTTPURLResponse, data != nil {
                     //If request succeded and there is a responses
-                    if let statusError = self.checkStatusCode(with: urlResponse) {
+                    if let statusError = self.checkStatusCode(with: urlResponse, error: error) {
                         self.handleFailureResponse(with: statusError, with: completion)
                     } else {
                         self.handleSuccessResponse(with: data!, and: response, with: completion)
                     }
                 } else {
-                    completion(nil, nil, NetworkResponseError.requestFailed)
+                    completion(nil, nil, NetworkResponseError.requestFailed(error: error))
                 }
             })
         } catch {
-            completion(nil, nil, NetworkResponseError.requestFailed)
+            completion(nil, nil, NetworkResponseError.requestFailed(error: error))
         }
         task?.resume()
     }
@@ -57,9 +71,9 @@ public class Router<E: EndpointType, R: Codable>: NetworkRouter {
         request.httpMethod = route.httpMethod.rawValue
         switch route.task {
         case .request: break
-        case .requestWithParameters(let bodyParameters, let urlParameters):
+        case .requestWithParameters(let bodyParameters, let urlParameters, let pathParameters):
             do {
-                try self.configureParameters(with: bodyParameters, urlParameters: urlParameters, and: &request)
+                try self.configureParameters(with: bodyParameters, urlParameters: urlParameters, pathParameters: pathParameters, and: &request)
             } catch {
                 throw error
             }
@@ -67,7 +81,9 @@ public class Router<E: EndpointType, R: Codable>: NetworkRouter {
         return request
     }
     private func configureParameters<T: Encodable>(with bodyParameters: T?,
-                                                   urlParameters: Parameters?, and request: inout URLRequest) throws {
+                                                   urlParameters: Parameters?,
+                                                   pathParameters: [String]?,
+                                                   and request: inout URLRequest) throws {
         do {
             if let bodyParameters = bodyParameters {
                 try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters)
@@ -75,31 +91,34 @@ public class Router<E: EndpointType, R: Codable>: NetworkRouter {
             if let urlParameters = urlParameters {
                 try URLParameterEncoder.encode(urlRequest: &request, with: urlParameters)
             }
+            if let pathParameters = pathParameters {
+                try URLPathParameterEncoder.encode(urlRequest: &request, with: pathParameters)
+            }
         } catch {
             throw error
         }
     }
-    private func checkStatusCode(with urlResponse: HTTPURLResponse) -> NetworkResponseError? {
+    private func checkStatusCode(with urlResponse: HTTPURLResponse, error: Error?) -> NetworkResponseError? {
         switch urlResponse.statusCode {
         case 200...299:return nil
         case 300...399:
-            return NetworkResponseError.redirected
+            return NetworkResponseError.redirected(error: error)
         case 403:
-            return NetworkResponseError.forbidden
+            return NetworkResponseError.forbidden(error: error)
         case 400...499:
-            return NetworkResponseError.badRequest
+            return NetworkResponseError.badRequest(error: error)
         case 500...509:
-            return NetworkResponseError.serverError
+            return NetworkResponseError.serverError(error: error)
         default:return nil
         }
     }
     private func handleSuccessResponse(with data: Data, and urlResponse: URLResponse?,
                                        with completion: @escaping (R?, URLResponse?, NetworkResponseError?) -> Void) {
         delegate?.didFinishWithSuccess()
-        if let responseObject = try? JSONDecoder().decode(ResponseObject.self, from: data) {
-            completion(responseObject, urlResponse, nil)
-        } else {
-            completion(nil, urlResponse, NetworkResponseError.parsingError)
+        do {
+            completion(try JSONDecoder().decode(ResponseObject.self, from: data), urlResponse, nil)
+        } catch let error {
+            completion(nil, urlResponse, NetworkResponseError.parsingError(error: error))
         }
     }
     private func handleFailureResponse(with error: NetworkResponseError,

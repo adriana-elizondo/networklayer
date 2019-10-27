@@ -7,13 +7,20 @@
 //
 import Foundation
 public struct URLParameterEncoder: ParameterEncoder {
+    static func encode(urlRequest: inout URLRequest, headers: HttpHeaders) throws {
+        for (key, value) in headers {
+            urlRequest.setValue(value, forHTTPHeaderField: key)
+        }
+    }
      static func encode(urlRequest: inout URLRequest, with urlParameters: Parameters) throws {
         guard let url = urlRequest.url else { throw NetworkError.invalidUrl }
         if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !urlParameters.isEmpty {
             urlComponents.queryItems = [URLQueryItem]()
             for (key, value) in urlParameters {
                 guard !key.isEmpty else {
-            urlRequest.url?.appendPathComponent("\(value)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
+                    var requestUrl = urlRequest.url
+                    let pathComponent = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+                    requestUrl?.appendPathComponent(pathComponent)
                     return
                 }
                 let queryItem = URLQueryItem(name: key,

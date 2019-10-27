@@ -18,7 +18,8 @@ public enum HttpMethod: String {
 }
 public enum HttpTask<T: Encodable> {
     case request
-    case requestWithParameters(bodyParameters: T? , queryParameters: Parameters?, pathParameters: [String]?)
+    case requestWithParameters(bodyParameters: T?, queryParameters: Parameters?, pathParameters: [String]?)
+    case requestWithHeaders(headers: HttpHeaders?, queryParameters: Parameters?)
 }
 public protocol EndpointType: RouterCompletionDelegate {
     associatedtype ParameterType: Encodable

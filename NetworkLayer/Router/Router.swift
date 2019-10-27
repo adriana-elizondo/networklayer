@@ -19,7 +19,8 @@ public protocol URLSessionDataTaskProtocol {
 }
 public typealias DataTaskResult = (Data?, URLResponse?, Error?) -> Void
 public protocol URLSessionProtocol {
-    func routerDataTask(with request: URLRequest, completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
+    func routerDataTask(with request: URLRequest,
+                        completionHandler: @escaping DataTaskResult) -> URLSessionDataTaskProtocol
 }
 public protocol NetworkRouter: class {
     associatedtype EndPoint
@@ -39,14 +40,14 @@ public class Router<E: EndpointType, R: Codable>: NetworkRouter {
     private var task: URLSessionDataTaskProtocol?
     private weak var delegate: RouterCompletionDelegate?
     private let session: URLSessionProtocol
-    public convenience init(){
+    public convenience init() {
         self.init(session: URLSession.shared)
     }
     public init(session: URLSessionProtocol) {
         self.session = session
     }
     public func request(with route: E, completion:
-        @escaping (R?,URLResponse?,NetworkResponseError?) -> Void) {
+        @escaping (R?, URLResponse?, NetworkResponseError?) -> Void) {
         do {
             let request = try buildRequest(from: route)
             task = session.routerDataTask(with: request, completionHandler: { data, response, error in
@@ -76,12 +77,42 @@ public class Router<E: EndpointType, R: Codable>: NetworkRouter {
         case .request: break
         case .requestWithParameters(let bodyParameters, let urlParameters, let pathParameters):
             do {
-                try self.configureParameters(with: bodyParameters, urlParameters: urlParameters, pathParameters: pathParameters, and: &request)
+                try self.configureParameters(with: bodyParameters,
+                                             urlParameters: urlParameters,
+                                             pathParameters: pathParameters,
+                                             and: &request)
+            } catch {
+                throw error
+            }
+        case .requestWithHeaders(headers: let headers, queryParameters: let queryParameters):
+            do {
+                try self.configureUrlParameters(with: queryParameters,
+                                                headers: headers,
+                                                pathParameters: nil,
+                                                and: &request)
             } catch {
                 throw error
             }
         }
         return request
+    }
+    private func configureUrlParameters(with urlParameters: Parameters?,
+                                        headers: HttpHeaders?,
+                                        pathParameters: [String]?,
+                                        and request: inout URLRequest) throws {
+        do {
+            if let headers = headers {
+                try URLParameterEncoder.encode(urlRequest: &request, headers: headers)
+            }
+            if let urlParameters = urlParameters {
+                try URLParameterEncoder.encode(urlRequest: &request, with: urlParameters)
+            }
+            if let pathParameters = pathParameters {
+                try URLPathParameterEncoder.encode(urlRequest: &request, with: pathParameters)
+            }
+        } catch {
+            throw error
+        }
     }
     private func configureParameters<T: Encodable>(with bodyParameters: T?,
                                                    urlParameters: Parameters?,

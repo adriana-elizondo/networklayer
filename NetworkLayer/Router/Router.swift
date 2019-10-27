@@ -39,6 +39,9 @@ public class Router<E: EndpointType, R: Codable>: NetworkRouter {
     private var task: URLSessionDataTaskProtocol?
     private weak var delegate: RouterCompletionDelegate?
     private let session: URLSessionProtocol
+    public convenience init(){
+        self.init(session: URLSession.shared)
+    }
     public init(session: URLSessionProtocol) {
         self.session = session
     }

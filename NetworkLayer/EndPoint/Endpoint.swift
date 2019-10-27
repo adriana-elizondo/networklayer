@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public typealias HTTPHeaders = [String: String]
+public typealias HttpHeaders = [String: String]
 public typealias Parameters = [String: Any]
 public enum HttpMethod: String {
     case get = "GET"
@@ -26,10 +26,10 @@ public protocol EndpointType: RouterCompletionDelegate {
     var path: String { get }
     var httpMethod: HttpMethod { get }
     var task: HttpTask<ParameterType> { get }
-    var headers: HTTPHeaders? { get }
+    var headers: HttpHeaders? { get }
 }
 public extension EndpointType {
-    var headers: HTTPHeaders? {
+    var headers: HttpHeaders? {
         return nil
     }
     func didFinishWithSuccess() {

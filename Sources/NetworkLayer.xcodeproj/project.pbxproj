@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2626B2A52369864A000C493C /* NetworkLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2626B2A42369864A000C493C /* NetworkLayerTests.swift */; };
+		2626B2A72369864A000C493C /* libNetworkLayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2649359E21B6317400FA3816 /* libNetworkLayer.a */; };
 		264935A221B6317400FA3816 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264935A121B6317400FA3816 /* NetworkLayer.swift */; };
 		264B48B02327791000D2AFC8 /* URLPathParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264B48AF2327791000D2AFC8 /* URLPathParameterEncoder.swift */; };
 		268598B3235053E80052D4F3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268598B2235053E80052D4F3 /* Extensions.swift */; };
@@ -20,19 +22,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		268598FF23505B890052D4F3 /* PBXContainerItemProxy */ = {
+		2626B2A82369864A000C493C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 268598FA23505B890052D4F3 /* NetworkLayerTests.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 268598CC23505B3D0052D4F3;
-			remoteInfo = NetworkLayerTests;
-		};
-		2685990123505B890052D4F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 268598FA23505B890052D4F3 /* NetworkLayerTests.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 268598E223505B3F0052D4F3;
-			remoteInfo = NetworkLayerTestsTests;
+			containerPortal = 2649359621B6317400FA3816 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2649359D21B6317400FA3816;
+			remoteInfo = NetworkLayer;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -49,11 +44,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2626B2A22369864A000C493C /* NetworkLayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkLayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2626B2A42369864A000C493C /* NetworkLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayerTests.swift; sourceTree = "<group>"; };
+		2626B2A62369864A000C493C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2649359E21B6317400FA3816 /* libNetworkLayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNetworkLayer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		264935A121B6317400FA3816 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		264B48AF2327791000D2AFC8 /* URLPathParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLPathParameterEncoder.swift; sourceTree = "<group>"; };
 		268598B2235053E80052D4F3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		268598FA23505B890052D4F3 /* NetworkLayerTests.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NetworkLayerTests.xcodeproj; path = ../../NetworkLayer/NetworkLayerTests/NetworkLayerTests.xcodeproj; sourceTree = "<group>"; };
 		2692EBCA22EC47CF00192405 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		26D6141621B6906D002024A4 /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		26D6141921B6908F002024A4 /* BaseResponseCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResponseCodable.swift; sourceTree = "<group>"; };
@@ -64,6 +61,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2626B29F2369864A000C493C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2626B2A72369864A000C493C /* libNetworkLayer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2649359B21B6317400FA3816 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -74,12 +79,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2626B2A32369864A000C493C /* NetworkLayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				2626B2A42369864A000C493C /* NetworkLayerTests.swift */,
+				2626B2A62369864A000C493C /* Info.plist */,
+			);
+			path = NetworkLayerTests;
+			sourceTree = "<group>";
+		};
 		2649359521B6317400FA3816 = {
 			isa = PBXGroup;
 			children = (
 				264935A021B6317400FA3816 /* NetworkLayer */,
+				2626B2A32369864A000C493C /* NetworkLayerTests */,
 				2649359F21B6317400FA3816 /* Products */,
-				268598FA23505B890052D4F3 /* NetworkLayerTests.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				2649359E21B6317400FA3816 /* libNetworkLayer.a */,
+				2626B2A22369864A000C493C /* NetworkLayerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,15 +126,6 @@
 				268598B2235053E80052D4F3 /* Extensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		268598FB23505B890052D4F3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2685990023505B890052D4F3 /* NetworkLayerTests.app */,
-				2685990223505B890052D4F3 /* NetworkLayerTestsTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		2692EBC922EC479200192405 /* ImageCache */ = {
@@ -168,6 +174,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2626B2A12369864A000C493C /* NetworkLayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2626B2AA2369864A000C493C /* Build configuration list for PBXNativeTarget "NetworkLayerTests" */;
+			buildPhases = (
+				2626B29E2369864A000C493C /* Sources */,
+				2626B29F2369864A000C493C /* Frameworks */,
+				2626B2A02369864A000C493C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2626B2A92369864A000C493C /* PBXTargetDependency */,
+			);
+			name = NetworkLayerTests;
+			productName = NetworkLayerTests;
+			productReference = 2626B2A22369864A000C493C /* NetworkLayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2649359D21B6317400FA3816 /* NetworkLayer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 264935A521B6317400FA3816 /* Build configuration list for PBXNativeTarget "NetworkLayer" */;
@@ -192,10 +216,13 @@
 		2649359621B6317400FA3816 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = EF;
 				TargetAttributes = {
+					2626B2A12369864A000C493C = {
+						CreatedOnToolsVersion = 11.2;
+					};
 					2649359D21B6317400FA3816 = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1100;
@@ -213,35 +240,24 @@
 			mainGroup = 2649359521B6317400FA3816;
 			productRefGroup = 2649359F21B6317400FA3816 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 268598FB23505B890052D4F3 /* Products */;
-					ProjectRef = 268598FA23505B890052D4F3 /* NetworkLayerTests.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				2649359D21B6317400FA3816 /* NetworkLayer */,
+				2626B2A12369864A000C493C /* NetworkLayerTests */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		2685990023505B890052D4F3 /* NetworkLayerTests.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = NetworkLayerTests.app;
-			remoteRef = 268598FF23505B890052D4F3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
+/* Begin PBXResourcesBuildPhase section */
+		2626B2A02369864A000C493C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2685990223505B890052D4F3 /* NetworkLayerTestsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = NetworkLayerTestsTests.xctest;
-			remoteRef = 2685990123505B890052D4F3 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXShellScriptBuildPhase section */
 		266D582523082C43006E75C3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -261,7 +277,16 @@
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		2626B29E2369864A000C493C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2626B2A52369864A000C493C /* NetworkLayerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2649359A21B6317400FA3816 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,7 +306,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2626B2A92369864A000C493C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2649359D21B6317400FA3816 /* NetworkLayer */;
+			targetProxy = 2626B2A82369864A000C493C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		2626B2AB2369864A000C493C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3RCCUG568;
+				INFOPLIST_FILE = NetworkLayerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adriana.NetworkLayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2626B2AC2369864A000C493C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W3RCCUG568;
+				INFOPLIST_FILE = NetworkLayerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adriana.NetworkLayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		264935A321B6317400FA3816 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -427,6 +498,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2626B2AA2369864A000C493C /* Build configuration list for PBXNativeTarget "NetworkLayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2626B2AB2369864A000C493C /* Debug */,
+				2626B2AC2369864A000C493C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2649359921B6317400FA3816 /* Build configuration list for PBXProject "NetworkLayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
